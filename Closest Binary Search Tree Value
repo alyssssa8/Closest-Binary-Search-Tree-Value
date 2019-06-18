@@ -1,0 +1,21 @@
+class Solution {
+public:
+    int closestValue(TreeNode* root, double target) {
+        int result = root->val;
+        while (root) {
+            if ((double)root->val == target) {
+                return root->val;
+            }
+            if (abs((double)root->val - target) < abs(result - target)) {
+                result = root->val;
+            }
+            if (root->val > target) {
+                root = root->left;
+            }
+            else {
+                root = root->right;
+            }
+        }
+        return result;
+    }
+};
